@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: cornflowerblue;
+            border: 1px solid #ccc;
+        }
+
+        .left{
+            float: left;
+        }
+
+        .right {
+            float: right;
+        }
+        .clear {
+            clear: left;
+        }
+
+        .ab{
+            position: absolute;
+            width:200px;
+            height: 200px;
+            border: 1px solid #ccc;
+        }
+
+        .d1 {
+            background-color: lightblue;
+            z-index: 10;
+        }
+
+        .d2 {
+            background-color: lightgray;
+            margin-top: 10px;
+            margin-left: 20px;
+            z-index: 20;
+        }
+
+        .d3 {
+            background-color: lightpink;
+            margin-top: -20px;
+            margin-left: 40px;
+
+        }
+
+        .wrap{
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS3</h1>
+
+<!--    <div class ="box left">float left</div>-->
+<!--    <div class ="box right">float right</div>-->
+<!--    <div class ="clear"></div>-->
+<!--    <p>this is father</p>-->
+
+<!--    <div class = "ab d1">center</div>-->
+<!--    <div class = "ab d2">top</div>-->
+<!--    <div class = "ab d3">bottom</div>-->
+
+<div class = "wrap">
+    <div class = "box one">one</div>
+    <div class = "box two">two</div>
+    <div class = "box three">three</div>
+
+</div>
+
+</body>
+</html>

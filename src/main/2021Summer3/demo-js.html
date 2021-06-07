@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+  <script type = "text/javascript" src = "main.js"></script>
+    <script type = "text/javascript" src = "main1.js"></script>
+</head>
+<body>
+  <h1 onclick = "alert('hello')">Hello JS</h1>
+  <script type = "text/javascript">
+    // console.log('hello JS2')
+    // console.log(document.getElementsByTagName('h1')[0])
+    // var user;
+    // user = "Joe";
+    var user = "Joe";
+    var age = 25;
+
+    // primitive
+    // number string boolean
+
+    // reference
+    // object {key1 : value1, key2: value2}
+    // -> read: obj.key or obj[key]
+    // array
+    // -> []
+    // -> [number, string, boolean, fn, object, array]
+
+    // two special values
+    // var test;
+    // console.log(test);
+    // console.log(test1);
+
+    // var a = null;
+    // function fn() {
+    //     for (var i = 0; i < 2; i++) {
+    //         console.log(i + 1);
+    //     }
+    // }
+    // if (1 < 0) {
+    //     // for (var i = 0; i < 2; i++) {
+    //     //     console.log(i);
+    //     // }
+    //     fn();
+    // }
+    //
+    // if (3 > 2) {
+    //     // for (var i = 0; i < 2; i++) {
+    //     //     console.log(i);
+    //     // }
+    //     fn();
+    // }
+    //
+    // if (true) {
+    //     // for (var i = 0; i < 2; i++) {
+    //     //     console.log(i);
+    //     // }
+    //     fn();
+    // }
+
+    // how to define a fn
+    // method 1: the function declaration
+    //           function keyword + fn name
+    // function myFunc(paras) {
+    //     console.log('this is my fn');
+    //     console.log(paras + 1);
+    // }
+    //
+    // myFunc(10);
+    // myFunc(10);
+    // function myFunc(paras) {
+    //     console.log('this is my fn');
+    //     console.log(paras + 1);
+    // }
+
+
+    // myFunc2(10);
+    // console.log(myFunc2);
+    // method 2: expression --- anonymous function
+    // var fn = function() {}
+    // var myFunc2 = function(paras) {
+    //     console.log('this is my fn2');
+    //     console.log(paras + 10);
+    // }
+
+    // myFunc2(10);
+    //
+    // var myFunc2;
+    // myFunc2 = function(){}
+
+    // console.log(test);
+    // var test = 10;
+
+    // IIFE
+    // method 1: ()(), first() is used to define function;
+    //                 second() is used to call function, and assign value to parameters
+    // this method will make sure the function is GC-ed immediately after it's execution
+    // this method will help execution is limited to this function only.作用域的隔离.
+    // this method will not make our variables polluted.
+    (function () {
+        console.log(1);
+    })();
+
+    // equals to:
+    // var fn = function() {
+    //     console.log(1);
+    // }
+    // fn();
+  </script>
+
+</body>
+</html>

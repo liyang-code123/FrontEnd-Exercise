@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+<!--    <link rel = "stylesheet" type = "text/css" href = "./main.css" />-->
+
+    <!-- internal, not use this method often-->
+<!--    <style>-->
+<!--       h2 {-->
+<!--         color: red;-->
+<!--       }-->
+<!--    </style>-->
+
+    <style>
+        li {
+            color : blue;
+        }
+
+        #tx {
+            color : red
+        }
+
+        .comment {
+            font-size : 28px;
+        }
+
+        .btn {
+            width : 100px;
+            height : 50px
+        }
+
+        .btn-primary {
+            background-color:blue;
+        }
+
+        .btn-warning {
+            background-color: orange;
+        }
+
+        .btn-info {
+            background-color: green;
+        }
+
+        /** {*/
+        /*    color : blue;*/
+        /*    margin : 0;*/
+        /*    padding: 0;*/
+        /*}*/
+        /*h2 {*/
+        /*    color : blue;*/
+        /*}*/
+        /*div{*/
+        /*    color : blue;*/
+        /*}*/
+
+        /*p {*/
+        /*    color : blue;*/
+        /*}*/
+
+        p strong {
+            color: red;
+        }
+
+        /*<!-- strong must be p son -->*/
+        p > strong {
+            font-size : 40px;
+        }
+
+        /*this is add combinator selection.*/
+        h1, h2 {
+            color : purple;
+        }
+    </style>
+
+</head>
+<body>
+  <h1>Hello CSS</h1>
+  <h2>what is your favorite fruit?</h2>
+  <div>i like cherry</div>
+  <p>i prefer peach</p>
+
+  <ul>
+      <li id = "tx">TX</li>
+      <li>FL</li>
+      <li>CA</li>
+  </ul>
+
+  <ul>
+      <li class = "comment">create a html doc</li>
+      <li class = "comment">create a css file</li>
+      <li class = "comment">create a js file</li>
+  </ul>
+
+  <button class = "btn btn-primary">primary</button>
+  <button class = "btn btn-warning">warning</button>
+  <button class = "btn btn-danger">danger</button>
+  <button class = "btn btn-info">info</button>
+
+  <div>
+      <p>this is <span><strong>strong under span </strong> </span></p>
+      <p>this is a second paragraph</p>
+      <p><strong>this is strong under p</strong></p>
+  </div>
+
+</body>
+</html>
