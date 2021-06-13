@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="main.css">
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: cornflowerblue;
+        }
+    </style>
+</head>
+<body>
+    <h1 onclick ="alert('hello')">Event</h1>
+    <div></div>
+    <script>
+        console.log('start');
+        var oDiv = document.getElementsByTagName('div')[0];
+
+        //method 1: use onclick function. it is async. it can only execute once for the last code.
+        // oDiv.onclick = function() {
+        //     console.log(1)
+        // }
+        //
+        // oDiv.onclick = function() {
+        //     console.log(2)
+        // }
+
+        // method 2: use event listener(). it is also async. it can execute multiple times.
+        // event bubbling. extra read
+        // oDiv.addEventListener('click', function(){
+        //     console.log('clicked');
+        // }, false);
+
+        oDiv.addEventListener('click', function(event){
+            console.log('clicked 2');
+            console.log(event);
+            console.log(event.target);
+        }, false);
+
+        console.log('end');
+    </script>
+
+</body>
+</html>

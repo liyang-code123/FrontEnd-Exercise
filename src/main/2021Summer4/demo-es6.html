@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script src = "https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+</head>
+<body>
+  <h1>ES6</h1>
+  <script type ="text/babel">
+      // var a = 1;
+      // var a = 2;
+      // console.log(a);
+
+      // es5? IIFE 立即执行函数
+      // var b = 10;
+      // (function() {
+      //   var b = 20;
+      //   console.log(b);
+      // })();
+      // console.log(b);
+
+      // es6?
+      // {} scope include all within {}.
+      // let: can't be declared twice.
+      // let c = 10;
+      // // let c = 20;
+      // c = 20;
+      // console.log(c);
+
+      // function fn() {
+      //   var a = 1;
+      //   var a = 2;
+      //   let c = 10;
+      //   // let c = 20;
+      //   console.log(a, c);
+      // }
+      // fn();
+
+      // for(var i = 0; i < 3; i++) {
+      //   console.log(i);
+      // }
+      //
+      // console.log('after for loop: ', i); // var is like a global variable.
+
+      // for(let i = 0; i < 3; i++) {
+      //   console.log(i);
+      // }
+      //
+      // console.log('after for loop: ', i); // let has its working scope requirements.
+
+      // const: defines a constant. And once it is declared, it has to assign a value.
+      // let: it can be declared and no value assigned.
+      // sonst and let has the similar scope.
+      // const res = 0;
+      // res = 1;
+      // console.log(res);
+      //
+      // {
+      //   const c = "haha";
+      //   console.log(c);
+      // }
+      // console.log(c);
+
+      // destructuring
+      // array, object, parameter in function
+      // let arr = [1, 2, 3];
+      // const arr0 = arr[0];
+      // const arr1 = arr[1];
+      // const arr2 = arr[2];
+
+      // let [a, b, c] = arr;
+      // let [a, b] = arr;
+      // console.log(a, b);
+
+      // let [a, b, c, d] = arr;
+      // a = 'haha';
+      // console.log(a, b, c, d);
+
+      // OBJECT
+      // es5
+      // let obj = {name : "Snoopy", age : 12};
+      // const objName = obj.name;
+      // const objAge = obj.age;
+
+      // es6
+      // const {name: nameVal, age: ageVal} = obj;
+      // console.log(nameVal, ageVal);
+      // const {name, age} = obj;
+      // console.log(name, age);
+
+      // function parameter deconstructuring
+      // function fn(arr) {
+      //     console.log(arr[0] + arr[1]);
+      // }
+      // fn([1, 2]);
+
+      // function fn([n1, n2]) {
+      //     console.log(n1 + n2);
+      // }
+      // fn([1, 2, 6, 8]);
+
+      // default + rest + spread
+      // function test(a, b) {
+      //     let x = a || 0;
+      //     let y = b || 0;
+      //     console.log(x + y);
+      // }
+      // test(); // NaN: not a number
+
+      // function test(a = 1, b = 2) {
+      //     console.log(a + b);
+      // }
+      // test(11, 222);
+      // test();
+
+      // function fn (a, b, c = 1) {
+      //     console.log(a, b, c);
+      // }
+      // fn(2, 3);
+      // fn(60);
+
+      // function fn (a, b = 1, c) {
+      //     console.log(a, b, c);
+      // }
+      // // fn(2, 3); // 2, 3, undefined
+      // fn(); // undefined, 1, undefined.
+
+      // rest(...)
+      // let arr = [1, 2, 3, [2, 3]];
+      // let arr2 = [];
+      // arr.forEach(function(item){
+      //     arr2.push(item);
+      // });
+      // arr2.push(4);
+      // arr2.push(5);
+
+      // let arr2 = arr.concat([4, 5, 6]);
+
+      // let arr2 = [...arr]; // it is a shallow copy because it creates a new object with a new address.
+      // let arr3 = arr; // it will have arr3 and arr point to the same address.
+
+      // let arr2 = [...arr, 4, 5, 6]
+
+      // let obj = {a : 1, b : 2, name : {aa : 1}};
+      // let obj2 = {...obj};
+      // let obj3 = {...obj, c : 10};
+
+      // function fn(a, b, c) {
+      //       console.log(arguments);
+      //       console.log(a, b, c);
+      // }
+      // fn(1, 2, 3);
+
+      // function fn(...args) { // the pro is 动态传参
+      //     console.log(args);
+      //     let sum = 0;
+      //     for (let i = 0; i < args.length; i++) {
+      //         sum += args[i];
+      //     }
+      //     console.log(sum);
+      // }
+      // fn(1, 2, 3);
+      // fn(1, 2, 3, 4, 5, 6, 7);
+
+      // arrow function. it is a way of writing.
+      // () => {}
+      // const f = function (a, b) {
+      //     a++;
+      //     return a + b;
+      // }
+      //
+      // const f1 = (a, b) =>{
+      //     a++;
+      //     return a + b;
+      // }
+      // console.log(f(1, 5));
+      // console.log(f1(1, 5));
+
+      // const f = (a, b) => {
+      //     return a + b;
+      // }
+      //
+      // const f1 = (a, b) => a + b;
+      // console.log(f(2, 6));
+
+      // const f = (a) => {
+      //     a++;
+      //     console.log(a);
+      // }
+      //
+      // const f1 = a => {
+      //     a++;
+      //     console.log(a);
+      // }
+      // console.log(f1(10));
+
+      // const f = (a) => {
+      //     return a+10;
+      // }
+      //
+      // const f1 = a => a + 10;
+      // console.log(f1(10));
+
+      // arrow function has no arguments. we can use ...to get the parameter actively.
+      // const f = (a, b) => {
+      //     console.log(arguments);
+      //     console.log(a, b);
+      // }
+      // f(1, 2);
+
+      // const f = (...arr) => {
+      //     console.log(arr);
+      // }
+      // f(1, 2, 3);
+      // f(1,2 ,3, 4, 5);
+
+      /* arrow function this keyword. */
+
+      function fn() {
+          console.log('fn this: ', this);
+          // under babel, this is relative.
+          // function run() {
+          //     console.log('run this: ', this);
+          // }
+
+          // arrow function's this will follow its parent reference.
+          const run = () => {
+              console.log('run this: ', this)
+          };
+          run();
+      }
+
+      let item1 = {
+          a : 1,
+          b : fn
+      };
+
+      let item2 = {
+          a : 2,
+          b : fn
+      }
+      console.log(item1.b); // it will print the function body.
+      item1.b();
+      // item2.b();
+
+      // this will point to the Window.
+      setTimeout(function() {
+          console.log('timeout -> ', this);
+      }, 1000)
+
+      // es6. class; es5 using prototypeof
+      class Person {
+          constructor(name, age, hobby) {
+              this.name = name;
+              this.age = age;
+              this.hobby = hobby;
+          }
+
+          sayHello() {
+              console.log();
+              const str = 'My name is ' + this.name + 'I am ' + this.age + 'years old, I like ' + this.hobby;
+              console.log(`My name is ${this.name}, I am ${this.age} years old, I like ${this.hobby}`);
+
+              console.log(str);
+          }
+      }
+
+      class Student extends Person {
+          constructor(name, age, hobby, school) {
+              super(name, age, hobby);
+              this.school = school;
+          }
+
+          goToSchool() {
+              console.log(`this is ${this.name}, I go to ${this.school}`);
+          }
+
+      }
+
+      var curry = new Student('Curry', 9, 'basketball', 'elementary school');
+      curry.sayHello();
+      curry.goToSchool();
+
+  </script>
+
+</body>
+</html>
