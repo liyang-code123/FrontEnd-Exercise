@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+
+</head>
+<body>
+<h1>React</h1>
+<div id = 'app'></div>
+<script type = "text/babel">
+  //1. how to use React
+  //    React --> core --> components , virtual dom, life cycle.
+  //    Rreact-dom -> virtual dom and real com connected.
+  //    babel --> compile.    babel will convert JSX to JS. React is JSX language.
+
+  //2. how to create virtual dom.
+  // const el1 = React.createElement("h2", {className : 'box'}, 'hello react');
+
+  //3. JSX
+  // JS + HTML
+  // expression. 插值操作
+  // it can use for, if, while in the expression.
+  // it can't initialize and assign variable in the expression.
+  /*
+  const el1 = <h2 className ="box">hello react!!</h2>;
+
+
+  const a = 10;
+  const ele = <p>{a}</p>;
+  const str = 'this is a car'
+  const bool = true;
+  // const arr = ['a', 'b', 'c']
+  // key must be added when the same components appears.
+  const arr = [<li key = "1">first</li>, <li key = "2">second</li>, <li key = "3">third</li>]
+  const obj = {name : "Joe", age : 10}
+  const add = (a, b) => a + b;
+
+  // const ele2 = <p>a</p>;
+
+  // it must use a div to be the root for two p tags.
+  // bool can't be inserted.
+  // <p>{if(3 < 5) {return 'I have a dog'}}</p>
+  const ele2 = <div>
+    <p>{a}</p>
+    <p>{str}, {a}</p>
+    <p>{bool}</p>
+    <p>{arr}</p>
+    <p>{JSON.stringify(obj)}</p>
+    <p>{obj.name}, {obj.age}</p>
+    <hr/>
+    function:
+    <p>{add(3, 6)}</p>
+    <hr/>
+    <p>I have a {3 < 5 ? 'dog' : 'cat'}</p>
+
+  </div>
+
+ */
+  // 4. Components
+  // class-based - function-based
+  // 组件函数，返回值必须是virtual elements
+  // function ComponentName() {
+  //   return ve;
+  // }
+
+  // regular function
+
+  /*
+  function Hello1() {
+    return "hello";
+  }
+
+  // component function. (stateless component) it will return a JSX.
+  // define Hello component
+  const Hello = function() {
+      return <div>
+        <h2>Hello!</h2>
+        <ul>
+          <li>Apple</li>
+          <li>Pear</li>
+        </ul>
+      </div>
+  };
+
+  // instantiate Hello component
+  const ele = <div>
+    <Hello />
+    <Hello />
+  </div>
+
+  // class-based component (state components)
+  class HelloApp extends React.Component {
+    // optional
+    constructor() {
+      super();
+    }
+
+    // required
+    render() {
+      return <div>
+        <p>Hello App</p>
+        <p>I am a React Component</p>
+      </div>
+    }
+  }
+*/
+
+  // props is function parameters.
+  // props is an object {}.
+  function Hello(props) {
+    console.log(props);
+    return <div>
+      <p>this is a Hello Component</p>
+      <p>Hello {props.personData.name}</p>
+      <p>Hello {props.fruit}</p>
+    </div>
+  }
+  const person = {name : 'Joe', age : 20};
+
+  // in the class, we use this.props to get the data.
+  // in the function, we use props to get the data.
+  // react use props to pass parameters.
+  class Hello2 extends React.Component{
+    constructor() {
+      super();
+      this.abc = "123";
+    }
+    render() {
+      //  print abc
+      console.log(this.abc);
+      return <div>
+        <p>this is a Hello Component</p>
+        <p>Hello {this.props.personData.name}</p>
+        <p>Hello {this.props.fruit}</p>
+      </div>
+    }
+  }
+  ReactDOM.render(
+          // <Hello />,
+          // ele,
+          <Hello2 personData={person} fruit = {"apple"}/>,
+          document.getElementById('app')
+  )
+</script>
+</body>
+</html>
