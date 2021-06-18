@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+</head>
+<body>
+<h1>State and Event</h1>
+<div id = 'app'></div>
+<script type = "text/babel">
+  // class App extends React.Component {
+  //   constructor() {
+  //     super();
+  //     this.state = {
+  //       a : 20
+  //     }
+  //   }
+  //
+  //  handleButton1Click = () => {
+  //     this.setState(
+  //             { a : this.state.a + 1}
+  //     )
+  // }
+  //
+  // handleButton2Click = () => {
+  //   this.setState(
+  //           {a : this.state.a + 20}
+  //   )
+  // }
+  //
+  // objA = {
+  //     prop1 : 10
+  // }
+  //
+  // objB = {
+  //     prop2 : 20
+  // }
+  //
+  //   render () {
+  //     return (
+  //             <div>
+  //               <div>{this.state.a}</div>
+  //               <div>
+  //                 <button onClick = {this.handleButton1Click}>button1</button>
+  //                 <button onClick= {this.handleButton2Click}>button2</button>
+  //               </div>
+  //             </div>
+  //     )
+  //   }
+  // }
+
+  class App extends React.Component {
+    constructor() {
+      super();
+      this.state = {
+        r: 100,
+        g: 120,
+        b: 160
+      }
+    }
+
+    render() {
+      return (
+              <div>
+                <div style={{
+                  "backgroundColor": `rgb(${this.state.r}, ${this.state.g}, ${this.state.b}`,
+                  "width": "200px",
+                  "height": "200px"
+                }}>box
+                </div>
+
+                <p>
+                  red :
+                  <input type="range" min="0" max="255" value={this.state.r} onChange={
+                    (e) => {
+                      console.log(e.target);
+                      this.setState({
+                        r: e.target.value
+                      });
+                    }
+                  }/>
+                  {this.state.r}
+                </p>
+                <p>
+                  green :
+                  <input type="range" min="0" max="255" value={this.state.g} onChange={
+                    (e) => {
+                      console.log(e.target);
+                      this.setState({
+                        g: e.target.value
+                      });
+                    }
+                  }/>
+                  {this.state.g}
+                </p>
+                <p>
+                  blue :
+                  <input type="range" min="0" max="255" value={this.state.b} onChange={
+                    (e) => {
+                      console.log(e.target);
+                      this.setState({
+                        b: e.target.value
+                      });
+                    }
+                  }/>
+                  {this.state.b}
+                </p>
+              </div>
+      )
+    }
+  }
+
+  ReactDOM.render(
+          <App/>,
+          document.getElementById('app')
+  );
+
+
+
+</script>
+
+</body>
+</html>
