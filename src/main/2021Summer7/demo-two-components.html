@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/react@^16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.13.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+<body>
+<h1>React Components</h1>
+<hr/>
+<hr/>
+<div id="app"></div>
+
+<hr/>
+<hr/>
+<!--<p class="title">hello react 2</p>-->
+<!--<button class="btn">zoom in</button>-->
+<!--<script type ="text/javascript">-->
+<!--  var oTitle = document.getElementsByClassName('title')[0];-->
+<!--  var oBtn = document.getElementsByClassName('btn')[0];-->
+
+<!--  var value = 16;-->
+<!--  oBtn.addEventListener('click', function() {-->
+<!--    // change data-->
+<!--    value += 10;-->
+<!--    // view <-> data-->
+<!--    oTitle.style.fontSize = value + 'px';-->
+<!--  })-->
+
+<!--</script>-->
+<!--<script type = "text/babel">-->
+<!--  // var arr = [1, 2, 3];-->
+<!--  // var newArr = [];-->
+<!--  // // declarative function-->
+<!--  // // arr.forEach(function(item) {-->
+<!--  // //   newArr.push(item * 2);-->
+<!--  // // })-->
+<!--  //-->
+<!--  // for(let i = 0; i < arr.length; i++) {-->
+<!--  //   newArr.push(arr[i] * 2);-->
+<!--  // }-->
+
+<!--  class App extends React.Component {-->
+<!--    // method1: define state-->
+<!--    constructor(props) {-->
+<!--      super(props);-->
+<!--      this.state = {-->
+<!--        a : 100,-->
+<!--        b : 200-->
+<!--      }-->
+<!--    }-->
+
+<!--    // method2: define state-->
+<!--    // state = {-->
+<!--    //   a : 100-->
+<!--    // }-->
+<!--    render() {-->
+<!--      const {a} = this.state; // deconstruct-->
+<!--      // console.log('in render', this.state)-->
+<!--      return <div>-->
+<!--        <h2>App</h2>-->
+<!--        <h3>{-->
+<!--          // use state display state value-->
+<!--          a-->
+<!--        }</h3>-->
+<!--        <hr/>-->
+<!--        <button onClick={-->
+<!--          // method2: this.onChangeState-->
+<!--          // method1: () =>-->
+<!--          () => {-->
+<!--            console.log('clicked')-->
+<!--            // this.state.a += 10;-->
+<!--            // console.log(this.state.a);-->
+<!--            // this.setState({-->
+<!--            //   a: "haha"-->
+<!--            // });-->
+<!--            // this.setState(preState => {-->
+<!--            //   // console.log(preState)-->
+<!--            //   return {-->
+<!--            //     ...preState,-->
+<!--            //     a: preState.a + 10-->
+<!--            //   }-->
+<!--            // });-->
+<!--            // console.log(this.state);-->
+
+<!--            setTimeout(() =>{-->
+<!--              this.setState(preState => {-->
+<!--                // console.log(preState)-->
+<!--                return {-->
+<!--                  ...preState,-->
+<!--                  a: preState.a + 10-->
+<!--                }-->
+<!--              });-->
+<!--              // console.log(this.state);-->
+<!--            } , 1000)-->
+<!--           }-->
+<!--                // this.onChangeState-->
+<!--          }>change state</button>-->
+
+<!--        <hr/>-->
+<!--        <p style={{'fontSize' : a}}>hello react </p>-->
+<!--      </div>-->
+<!--      // use () => {} to make sure only show clicked when clicking.-->
+<!--    }-->
+
+<!--    // onChangeState() {-->
+<!--    //   console.log('clicked')-->
+<!--    // }-->
+
+<!--  }-->
+
+<!--  // ReactDOM.render(-->
+<!--  //         <App />,-->
+<!--  //         document.getElementsById("app")[0]-->
+<!--  // )-->
+<!--</script type="text/babel">-->
+
+<script type="text/babel">
+    // class ControlledComp extends React.Component {
+    //     state = {
+    //         title: "hello react"
+    //     }
+    //
+    //     render() {
+    //         const {title} = this.state;
+    //         return <div>
+    //             <h3>{title}</h3>
+    //             <input
+    //                 type="text"
+    //                 value={title}
+    //                 onChange={
+    //                     e => {
+    //                         console.log(e.target.value);
+    //                         this.setState({
+    //                             title: e.target.value
+    //                         })
+    //                     }
+    //                 }
+    //             />
+    //         </div>
+    //     }
+    // }
+
+
+    // class ControlledComp extends React.Component {
+    //     state = {
+    //         r: 100,
+    //         g: 100,
+    //         b: 100
+    //     }
+    //
+    //     render() {
+    //         const {r, g, b} = this.state;
+    //         return <div>
+    //             <div style={{
+    //               "backgroundColor" : `rgb(${r}, ${g}, ${b}`,
+    //               "width" : "200px",
+    //               "height" : "200px"
+    //             }}>box</div>
+    //
+    //           <p>
+    //             red:
+    //             <input
+    //                     type="range"
+    //                     min="0"
+    //                     max="255"
+    //                     value={r} // value + onChange
+    //                     onChange={
+    //                       e => {
+    //                         // console.log(e.target.value);
+    //                         this.setState({
+    //                           r: e.target.value
+    //                         })
+    //                       }
+    //                     }
+    //             />
+    //             {r}
+    //           </p>
+    //           <p>
+    //             green:
+    //             <input
+    //                     type="range"
+    //                     min="0"
+    //                     max="255"
+    //                     value={g}
+    //                     onChange={
+    //                       e => {
+    //                         this.setState({
+    //                           g: e.target.value
+    //                         })
+    //                       }
+    //                     }
+    //             />
+    //             {g}
+    //           </p>
+    //
+    //           <p>
+    //             blue:
+    //             <input
+    //                     type="range"
+    //                     min="0"
+    //                     max="255"
+    //                     value={b}
+    //                     onChange={
+    //                       e => {
+    //                         this.setState({
+    //                           b: e.target.value
+    //                         })
+    //                       }
+    //                     }
+    //             />
+    //             {b}
+    //           </p>
+    //
+    //         </div>
+    //     }
+    // }
+
+    // createRef
+    class UncontrolledCom extends React.Component {
+      constructor() {
+        super();
+        // step1: define a ref(unique)
+        this.myInput = React.createRef(); // {current: null}
+        console.log(this.myInput);
+      }
+
+      render() {
+        return <div>
+          {
+            // step2: assign the ref
+          }
+          <input type="text" ref={this.myInput}/>
+          <button onClick={
+            () => {
+              // step3: visit the ref
+              console.log(this.myInput.current.value)
+            }
+          }>click me</button>
+        </div>
+      }
+    }
+
+    ReactDOM.render(
+        <UncontrolledCom/>,
+        document.getElementById("app")
+    )
+</script>
+</body>
+</html>
