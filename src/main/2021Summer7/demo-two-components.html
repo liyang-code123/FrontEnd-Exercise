@@ -239,6 +239,16 @@
               console.log(this.myInput.current.value)
             }
           }>click me</button>
+
+            <p ref={this.myP}>this is p</p>
+            {
+                //method2: using callback for ref
+            }
+            <p ref={
+                refInstance => {
+                    console.log('ref instance ->', refInstance)
+                }
+            }>this is ref</p>
         </div>
       }
     }

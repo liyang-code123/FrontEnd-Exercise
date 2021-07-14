@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/react@^16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.13.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+<body>
+<h1>Data Communication</h1>
+<div id="app"></div>
+<script>
+    /*
+       type1: Parent -> Child: use props
+           in parent: <C key=value>
+           in child:  props.key
+       type2: Child -> Parent: use call back function
+           in parent: define a function in the parent;
+                      <C key=fn>
+           in child: props.key(value)
+       type3: sibling -> sibling: use LCA
+           parent -> child + child -> parent
+    */
+</script>
+<script type="text/babel">
+    class Parent extends React.Component {
+        state = {
+            a : 10,
+            str: "Hello",
+            name: ""
+        }
+        render() {
+            const { a, str, name } = this.state;
+            return (
+                <div>
+                    <h3>This is Parent</h3>
+                    <p>my data is { a }</p>
+                    <p>data from grand child: {name}</p>
+                    <hr/>
+                    <hr/>
+                    <Child
+                        dataFromP={ a }
+                        dataToGrand={ str }
+                        onChangeNum={ this.onChangeNumHandler }
+                        onPassData={ this.passDataToGC }
+                    />
+                </div>
+            )
+        }
+        onChangeNumHandler = num => {
+            console.log('received num: ', num);
+            this.setState({a: num})
+        }
+
+        passDataToGC = data => {
+            console.log('data from g.c: ', data);
+            this.setState({name: data})
+        }
+    }
+
+    class Child extends React.Component {
+        render() {
+            const {dataFromP, dataToGrand, onPassData} = this.props;
+            return (
+                <div>
+                    <h3>This is Child</h3>
+                    <p>The data from Parent is: {dataFromP}</p>
+                    <button onClick={
+                        () => {
+                            console.log(this.props.onChangeNum);
+                            this.props.onChangeNum(9);
+
+                        }
+                    }>click me</button>
+                    <hr/>
+                    <hr/>
+                    <GrandChild
+                        dataFromChild={ dataToGrand }
+                        onDataPassing={ onPassData }
+                    />
+                </div>
+            )
+        }
+
+        // passDataToGC = data => {
+        //     console.log('data from g.c: ', data);
+        // }
+    }
+
+    class GrandChild extends React.Component {
+        render() {
+            const { dataFromChild } = this.props;
+            return (
+                <div>
+                    <h5>This is GrandChild</h5>
+                    <p>The data from Parent is: {dataFromChild}</p>
+                    <button onClick={
+                        () => {
+                            this.props.onDataPassing("React")
+                        }
+                    }>passing data</button>
+                </div>
+            )
+        }
+    }
+
+    ReactDOM.render(
+        <Parent/>,
+        document.getElementById("app")
+    )
+
+</script>
+
+</body>
+</html>
