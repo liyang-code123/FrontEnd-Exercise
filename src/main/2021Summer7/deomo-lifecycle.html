@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/react@^16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.13.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+<body>
+<h1>Component Lifecycle</h1>
+<hr/>
+<hr/>
+<div id="app" ></div>
+<script type="text/babel">
+    class Parent extends React.Component {
+        state = {
+            isShow: false,
+            num: 100
+        }
+
+        // render will not do the data information.
+        // it is only used to return virtual element.
+        render() {
+            const { isShow, num } = this.state;
+
+            return (
+                <div>
+                    <h3>This is Parent Component</h3>
+                    <button onClick={
+                        () => {
+                            // this.setState(pre => ({isSHow: !pre.isShow}))
+                            this.setState({isShow: !this.state.isShow})
+                        }
+                    }>show / hide</button>
+                    <button onClick={
+                        () => {
+                            this.setState({ num : 'haha'})
+                        }
+                    }>change num</button>
+                    <hr/>
+                    {
+                        isShow ? <Child data={ num }/> : null
+                    }
+                </div>
+            )
+        }
+    }
+
+    class Child extends React.Component {
+        constructor() {
+            super();
+            this.state = {
+                b : 200
+            }
+            console.log("1. constructor");
+        }
+
+        render() {
+            const { data } = this.props;
+            console.log("2. render");
+            return (
+                <div>
+                    <h5>This is Child Component</h5>
+                    <p>The number from Parent is : { data }</p>
+                    <button onClick={
+                        () => {
+                            this.setState( pre => {
+                                return {
+                                    b: pre.b - 10
+                                }
+                            })
+                        }
+                    }>change b value</button>
+                </div>
+            )
+        }
+
+        // componentDidMount is used for communication with backend.
+        componentDidMount() {
+            console.log("3. componentDidMount")
+            const oH5 = document.getElementsByTagName('h5')[0]
+            console.log('h5 -> ', oH5)
+        }
+
+        // DOM, and server communication.
+        componentDidUpdate(preProps, preState) {
+            console.log('4. componentDidUpdate');
+            console.log('preProps -> ', preProps);
+            console.log('preStaate -> ', preState);
+            // setState
+        }
+
+        // clear DOM elements, end server connections etc.
+        componentWillUnmount() {
+            console.log('5. willUnmount')
+        }
+    }
+
+
+    ReactDOM.render(
+        <Parent/>,
+        document.getElementById("app")
+    )
+</script>
+
+</body>
+</html>
