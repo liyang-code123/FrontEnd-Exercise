@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/react@^16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.13.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+<body>
+<h1>HOC</h1>
+<div id="app"></div>
+<script type="text/babel">
+  function widthSize(Component) {
+    return class Wrapper extends React.Component {
+      state = {
+        width : document.documentElement.clientWidth,
+        height: document.documentElement.clientHeight,
+      }
+
+      render () {
+        return (
+                <Component {...this.state}/>
+        )
+      }
+      componentDidMount() {
+        window.addEventListener('resize', this.getSize);
+      }
+
+      getSize = () => {
+        this.setState({
+          width : document.documentElement.clientWidth,
+          height: document.documentElement.clientHeight,
+        })
+      }
+    }
+  }
+  class Child extends React.Component {
+    state = {
+      width : document.documentElement.clientWidth,
+      height: document.documentElement.clientHeight,
+    }
+
+    render () {
+      const { width, height } = this.state;
+      return <div>
+        <h2>I am Child</h2>
+        <p>width: { width }</p>
+        <p>height: { height }</p>
+      </div>
+    }
+
+    componentDidMount() {
+      window.addEventListener('resize', this.getSize);
+    }
+
+    getSize = () => {
+      this.setState({
+        width : document.documentElement.clientWidth,
+        height: document.documentElement.clientHeight,
+      })
+    }
+  }
+
+  class Parent extends React.Component {
+    render () {
+      return (
+              <div>
+                <h2>This is Parent</h2>
+                <hr />
+                <Child />
+              </div>
+      )
+    }
+  }
+  ReactDOM.render(
+          <Parent />,
+          document.getElementById('app')
+  )
+  // cb
+  // function fn(cb) {
+  //   console.log(1);
+  //   cb(10);
+  // }
+  //
+  // function test(a) {
+  //   console.log(a + 1);
+  // }
+  //
+  // fn(test);
+  //
+  // // fn is a return.
+  // function cal(rule) {
+  //   if (rule === "+") {
+  //     return function(a, b) {
+  //       console.log(a + b);
+  //     }
+  //   } else if (rule === "-") {
+  //     return function(a, b) {
+  //       console.log( a - b);
+  //     }
+  //   } else {
+  //     return function() {
+  //       console.log(a, b);
+  //     }
+  //   }
+  // }
+  //
+  // var add = cal("+");
+  // console.log(add);
+  // add(1, 2);
+  //
+  // cal("-")(2, 1);
+  //
+  // var isString = function(obj) {
+  //   return Object.prototype.toString.call(obj) === "[object String]";
+  // }
+  //
+  // var isArray = function(obj) {
+  //   return Object.prototype.toString.call(obj) === "[object Array]";
+  // }
+  //
+  // var isType = function(type) {
+  //   return function(obj) {
+  //     var typeVal = type.charAt(0).toUpperCase() + type.slice(1);
+  //     return Object.prototype.toString.call(obj) === `[object ${typeVal}]`;
+  //   }
+  // }
+  //
+  // console.log(isType('object')([1, 2]));
+
+  // hoc - higher ordered function
+  // function as a parameter
+  // function as a return value
+
+</script>
+</body>
+</html>
