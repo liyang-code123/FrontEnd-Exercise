@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/react@^16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.13.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+<body>
+<h1>useEffect Hook</h1>
+
+<div id="app"></div>
+<script type="text/babel">
+    function EffectHook(props) {
+        const [count, setCount] = React.useState(0);
+        const [steps, setSteps] = React.useState(0);
+
+        // useEffect = didMount + didUpdate
+        // useEffect is async.
+        // React.useEffect( () => {
+        //     console.log('count ->', count);
+        // });
+
+        // [] is used to control the setCount's condition.
+        // if it is[], we do not need to execute setCount again.
+        // if it is [count], everytime when count is changed, execute setCount.
+        React.useEffect( () => {
+            setTimeout( setCount( preState => preState + 10), 1000)
+        }, [])
+
+        console.log('render');
+
+        return <div>
+            <h2>Click { count }</h2>
+            <h3>Steps: {steps}</h3>
+            <button onClick={
+                () => setCount(count + 10)
+            }>+ count</button>
+            <button onClick={
+                () => setSteps(count + 10)
+            }>+ count</button>
+        </div>
+
+    }
+
+    ReactDOM.render(
+        <EffectHook />,
+        document.getElementById("app")
+    )
+</script>
+</body>
+</html>
